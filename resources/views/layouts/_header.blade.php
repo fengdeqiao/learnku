@@ -17,13 +17,13 @@
                     @if(!empty(Auth()->user()) && Auth()->user()->hasRole('Founder'))
                         <a class="item" href="{{ route('course.books.show', $book->id) }}"
                            style="padding-right: 36px!important;">
-                            <img class="ui avatar image" src="{{ assert_images($book->image['path']) }}" style="width:20px;height:20px;margin-top: 0;margin-bottom: 0;">
+                            <img class="ui avatar image" src="{{ $book->image ? assert_images($book->image['path']) : '' }}" style="width:20px;height:20px;margin-top: 0;margin-bottom: 0;">
                             {{ $book->title }}
                         </a>
                     @elseif((int)$book->prices <= 1000)
                         <a class="item" href="{{ route('course.books.show', $book->id) }}"
                            style="padding-right: 36px!important;">
-                            <img class="ui avatar image" src="{{ assert_images($book->image['path']) }}" style="width:20px;height:20px;margin-top: 0;margin-bottom: 0;">
+                            <img class="ui avatar image" src="{{ $book->image ? assert_images($book->image['path']) : '' }}" style="width:20px;height:20px;margin-top: 0;margin-bottom: 0;">
                             {{ $book->title }}
                         </a>
                     @endif

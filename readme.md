@@ -34,7 +34,7 @@
 
 ### 基础安装
 
-1. 克隆 learnku 源代码到本地：
+1. 克隆 learnku 源代码到本地1：
 ```
 git clone git@github.com:learnku/learnku.git
 ```

@@ -70,7 +70,7 @@
                                      class="upload-img image-border ui popover"
                                      data-variation="inverted"
                                      data-content="【点击我】上传图片吧"
-                                     src="{{ assert_images($book->image['path']) }}" width="320">
+                                     src="{{ $book->image ? assert_images($book->image['path']) : '' }}" width="320">
                             </div>
 
                             <div contenteditable="true" id="pastebin"></div>

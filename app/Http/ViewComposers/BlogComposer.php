@@ -56,16 +56,15 @@ class BlogComposer
         $this->blogInfo['tags'] = DB::select(
             DB::raw("SELECT A.*,COUNT(B.id) AS count_num FROM `blog_tags` AS A LEFT JOIN blog_tags_link_articles AS B ON A.id=B.tag_id GROUP BY A.id")
         );
-
         // 最新文章
         $this->blogInfo['articles_news'] = array_sort($articles, function ($a, $b){
-            return strtotime($b['created_at']) - strtotime($a['created_at']);
+            return strtotime($b['created_at'] ?? date('Y-m-d H:i:s')) - strtotime($a['created_at']);
         });
         $this->blogInfo['articles_news'] = array_slice($this->blogInfo['articles_news'], 0, 5);
 
         // 最受欢迎
         $this->blogInfo['articles_hots'] = array_sort($articles, function ($a, $b){
-            return (int) $b['view_count'] - (int) $a['view_count'];
+            return (int) ($b['view_count'] ?? 0) - (int) $a['view_count'];
         });
         $this->blogInfo['articles_hots'] = array_slice($this->blogInfo['articles_hots'], 0, 5);
     }

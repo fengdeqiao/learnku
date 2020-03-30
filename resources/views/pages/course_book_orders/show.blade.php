@@ -11,7 +11,7 @@
                         <div class="ui items">
                             <div class="item">
                                 <div class="image">
-                                    <img class="ui image image-shadow lazy" data-original="{{ assert_images($book->image['path']) }}">
+                                    <img class="ui image image-shadow lazy" data-original="{{ $book->image ? assert_images($book->image['path']) : '' }}">
                                 </div>
                                 <div class="content">
                                     <div class="header" style="width:100%">
