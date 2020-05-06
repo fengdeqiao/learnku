@@ -6,6 +6,7 @@
         <a href="{{ route('blog.articles.index') }}" class="item secondary">
             博客
         </a>
+        <a href="http://learnku-fdq.com/blog/categories/4" class="item secondary">面试题</a>
         <div class="ui simple item dropdown article stackable nav-user-item  secondary">
             教程  <i class="dropdown icon"></i>
 

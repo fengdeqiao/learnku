@@ -30,7 +30,7 @@ class BlogCategoriesController extends Controller
             ->leftJoin('images', function ($join){
                 $join->on('images.user_id', '=', 'blog_articles.user_id')
                     ->where('images.image_type', '=', 'avatar');
-            })->paginate(20);
+            })->paginate(10);
 
         return view('pages.blog_articles.index', compact('blog_articles', 'category'));
     }

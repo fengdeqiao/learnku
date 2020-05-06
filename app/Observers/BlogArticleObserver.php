@@ -30,7 +30,7 @@ class BlogArticleObserver
             // $article->slug = app(SlugTranslateHandler::class)->translate($article->title);
 
             // 推送任务到队列
-            dispatch(new TranslateSlug($article));
+            //dispatch(new TranslateSlug($article));
         }
     }
 
