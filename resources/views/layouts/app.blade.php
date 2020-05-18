@@ -67,9 +67,9 @@
         <i class="icon talk outline"></i>
     </a>
 
-    @if (app()->isLocal())
-        @include('sudosu::user-selector')
-    @endif
+    {{--@if (app()->isLocal())--}}
+        {{--@include('sudosu::user-selector')--}}
+    {{--@endif--}}
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ assert_cdns('js/learnku.js') }}"></script>
