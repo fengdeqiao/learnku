@@ -49,7 +49,7 @@ class ConsumerKafka extends Command
         if (php_sapi_name() == 'cli') {
             echo $msg, PHP_EOL;
         }
-        app('myLog')->lumenLog($msg, 'kafka_consumer');
+        #app('myLog')->lumenLog($msg, 'kafka_consumer');
         return $this;
     }
 }
