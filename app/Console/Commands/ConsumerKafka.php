@@ -37,7 +37,7 @@ class ConsumerKafka extends Command
     public function handle()
     {
         $this->log('开始监听消息...');
-        app('kafkaService')->consumer($group = env('KAFKA_GROUP'), $topics = env('KAFKA_TOPIC'), $url = env('KAFKA_URL'));
+        app('kafkaService')->consumer($group = env('KAFKA_GROUP'), $topics = env('KAFKA_TOPIC'), $url = env('KAFKA_BROKER_URL'));
         return $this;
     }
 
