@@ -23,20 +23,23 @@ class KafkaService
         $config->setRequiredAck(1);
         $config->setIsAsyn(false);
         $config->setProduceInterval(500);
-        $producer = new \Kafka\Producer();
-//        $producer->success(function ($result) {
-//            return "success";
-//        });
-//        $producer->error(function ($errorCode) {
-//            var_dump($errorCode);
-//        });
-        $producer->send([
-            [
-                'topic' => $topic,
-                'value' => $value,
-                'key' => '',
-            ],
-        ]);
+        $producer = new \Kafka\Producer(function () use ($value, $topic) {
+            return [
+                [
+                    'topic' => $topic,
+                    'value' => $value,
+                    'key' => '',
+                ],
+            ];
+        });
+        $producer->success(function ($result) {
+            var_dump($result);
+            return "success";
+        });
+        $producer->error(function ($errorCode) {
+            var_dump($errorCode);
+        });
+        $producer->send(true);
     }
 
     /*
@@ -48,13 +51,13 @@ class KafkaService
         $config->setMetadataRefreshIntervalMs(500);
         $config->setMetadataBrokerList($url);
         $config->setGroupId($group);
-        $config->setBrokerVersion('1.0.0');
+        $config->setBrokerVersion('0.10.2.1');
         $config->setTopics([$topics]);
         $config->setOffsetReset('earliest');
         $consumer = new \Kafka\Consumer();
         $consumer->start(function ($topic, $part, $message) {
             echo "receive a message...\n";
-            app('consumerKafka')->consumerData($message['message']['value']);  //你的接收处理逻辑
+            #业务处理逻辑
             var_dump($message['message']['value']);
         });
     }
