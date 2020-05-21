@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Redis;
+use App\Http\Services\KafkaService;
 
 class ConsumerKafka extends Command
 {
@@ -37,7 +38,8 @@ class ConsumerKafka extends Command
     public function handle()
     {
         $this->log('开始监听消息...');
-        app('kafkaService')->consumer($group = env('KAFKA_GROUP'), $topics = env('KAFKA_TOPIC'), $url = env('KAFKA_BROKER_URL'));
+        $kafkaService = new KafkaService();
+        $kafkaService->consumer($group = env('KAFKA_GROUP'), $topics = env('KAFKA_TOPIC'), $url = env('KAFKA_BROKER_URL'));
         return $this;
     }
 
